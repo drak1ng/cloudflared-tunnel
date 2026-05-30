@@ -25,29 +25,29 @@ Atalhos aceitos para o host local:
 ```bash
 cloudflared-tunnel --local 3000 --public app.seudominio.com
 cloudflared-tunnel --local localhost:8080 --public api.seudominio.com
-cloudflared-tunnel --local convir.host --public convir.drkgarage.com.br
+cloudflared-tunnel --local site.host --public site.drkgarage.com.br
 ```
 
-Quando o `--local` for um host local sem protocolo, como `convir.host`, o script assume `https://convir.host` e deduz automaticamente:
+Quando o `--local` for um host local sem protocolo, como `site.host`, o script assume `https://site.host` e deduz automaticamente:
 
-- `--origin-host convir.host`
-- `--origin-sni convir.host`
+- `--origin-host site.host`
+- `--origin-sni site.host`
 - `--no-tls-verify`
 
 O comando curto abaixo:
 
 ```bash
-cloudflared-tunnel --local convir.host --public convir.drkgarage.com.br
+cloudflared-tunnel --local site.host --public site.drkgarage.com.br
 ```
 
 gera uma conexao equivalente a:
 
 ```bash
 cloudflared-tunnel \
-  --local https://convir.host \
-  --public convir.drkgarage.com.br \
-  --origin-host convir.host \
-  --origin-sni convir.host \
+  --local https://site.host \
+  --public site.drkgarage.com.br \
+  --origin-host site.host \
+  --origin-sni site.host \
   --no-tls-verify
 ```
 
@@ -68,15 +68,15 @@ Esse comando mostra os tunnels gerenciados pelo script e tambem os tunnels que a
 Para parar, voce pode informar o host local, o host publico ou o nome do tunnel:
 
 ```bash
-cloudflared-tunnel --stop convir.host
-cloudflared-tunnel --stop convir.drkgarage.com.br
-cloudflared-tunnel --stop cf-convir.drkgarage.com.br
+cloudflared-tunnel --stop site.host
+cloudflared-tunnel --stop site.drkgarage.com.br
+cloudflared-tunnel --stop cf-site.drkgarage.com.br
 ```
 
 Se quiser rodar preso ao terminal, mostrando os logs:
 
 ```bash
-cloudflared-tunnel --local convir.host --public convir.drkgarage.com.br --foreground
+cloudflared-tunnel --local site.host --public site.drkgarage.com.br --foreground
 ```
 
 Por padrao, o nome do tunnel sera `cf-<host-publico>`. Para definir outro nome:
